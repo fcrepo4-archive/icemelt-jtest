@@ -38,38 +38,7 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
 
-        <executions>
-          <execution>
-            <id>icemelt-aws-test</id>
-            <phase>integration-test</phase>
-            <goals>
-              <goal>integration-test</goal>
-              <goal>verify</goal>
-            </goals>
-            <configuration>
-              <testClassesDirectory>${project.build.directory}/ext/icemelt-aws-test/test-classes</testClassesDirectory>
-              <reportsDirectory>${project.build.directory}/failsafe-reports/icemelt-aws-test</reportsDirectory>
-              <summaryFile>${project.build.directory}/failsafe-reports/icemelt-aws-test/failsafe-summary.xml</summaryFile>
-
-              <includes>
-
-                <include>**/IcemeltTests.class</include>
-
-              </includes>
-
-              <excludes>
-              </excludes>
-
-            </configuration>
-          </execution>
-
-          <execution>
-            <id>local-tests</id>
-            <goals>
-              <goal>integration-test</goal>
-            </goals>
-          </execution>
-
+       <executions>
           <execution>
             <id>verify</id>
             <phase>verify</phase>
@@ -81,6 +50,9 @@
                 <summaryFile>${project.build.directory}/failsafe-reports/icemelt-aws-test/failsafe-summary.xml</summaryFile>
                 <summaryFile>${project.build.directory}/failsafe-reports/failsafe-summary.xml</summaryFile>
               </summaryFiles>
+              <includes>
+                <include>**/IcemeltTests.class</include>
+              </includes>
             </configuration>
           </execution>
 
@@ -98,6 +70,11 @@
             <GLACIER_ENDPOINT>${glacier.endpoint}</GLACIER_ENDPOINT>
           </environmentVariables>
 
+          <includes>
+            <include>**/IcemeltTests.class</include>
+          </includes>
+          <excludes>
+          </excludes>
         </configuration>
       </plugin>
     </plugins>
